@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="" ng-init="myCol='lightblue';quantity=1;cost=5;firstName='Tim';lastName='Jia'; person = {firstName:'Tim', lastName:'Jia'}; orders = [1,3,5,8,13]; moneys = ['USD','CNY','CAD'] ">
+
+<input style="background-color:{{myCol}}" ng-model="myCol" value="{{myCol}}">
+
+<!- two different expression ->
+<p>Total in dollar: {{ quantity * cost }}</p>
+<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+
+<p> The name is {{firstName + ' ' + lastName}} </p>
+<p> The name is <span ng-bind="firstName + ' ' + lastName"></span> </p>
+
+<!- Objects ->
+<p> The object name is {{person.firstName + ' ' + person.lastName}} </p>
+<p> The object name is <span ng-bind="person.firstName + ' ' + person.lastName"></span> </p>
+
+<!- Arrays ->
+<p> the second member of order  is {{ orders[1]}} </p>
+<p> the second member of order currency is <span ng-bind="moneys[1]"></span></p> 
+
+</div>
+
+</body>
+</html>
+
