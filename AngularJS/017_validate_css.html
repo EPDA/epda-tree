@@ -1,0 +1,49 @@
+<!- 
+The following classes are added to, or removed from, input fields:
+
+ng-untouched The field has not been touched yet
+ng-touched The field has been touched
+ng-pristine The field has not been  modified yet
+ng-dirty The field has been modified
+ng-valid The field content is valid
+ng-invalid The field content is not valid
+ng-valid-key One key for each validation. Example: ng-valid-required, useful when there are more than one thing that must be validated
+ng-invalid-key Example: ng-invalid-required
+The following classes are added to, or removed from, forms:
+
+ng-pristine No fields has not been modified yet
+ng-dirty One or more fields has been modified
+ng-valid The form content is valid
+ng-invalid The form content is not valid
+ng-valid-key One key for each validation. Example: ng-valid-required, useful when there are more than one thing that must be validated
+ng-invalid-key Example: ng-invalid-required
+The classes are removed if the value they represent is false.
+->
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
+<style>
+input.ng-invalid {
+    background-color:pink;
+}
+input.ng-valid {
+    background-color:lightgreen;
+}
+form.ng-pristine {
+    background-color:lightblue;
+}
+form.ng-dirty {
+    background-color:pink;
+}
+</style>
+<body ng-app="">
+
+<form name="myForm">
+<p>Try writing in the input field:</p>
+<input name="myName" ng-model="myName" required>
+<p>The input field requires content, and will therefore become green when you write in it.</p>
+</form>
+
+</body>
+</html>

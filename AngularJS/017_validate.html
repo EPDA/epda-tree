@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
+<body ng-app="">
+
+<p>Try writing in the input field:</p>
+
+<form name="myForm">
+<input name="myInput" ng-model="myInput" required>  <!- need to input something ->
+</form>
+
+<p>The input's valid state is:</p>
+<h1>{{myForm.myInput.$invalid}}</h1>
+
+
+<p>Try writing an E-mail address in the input field:</p>
+
+<form name="myForm2">
+<input type="email" name="myInput2" ng-model="myInput2">  <!- type = email ->
+</form>
+
+<p>The input's valid state is:</p>
+<h1>{{myForm2.myInput2.$valid}}</h1>
+
+</body>
+</html>
