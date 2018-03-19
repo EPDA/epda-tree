@@ -1,0 +1,123 @@
+
+PHP7 top features:
+1, Speed:(refuce memory consuption and increase performance) 
+	Almost twice as fast as PHP5.6
+
+2, Type Declarationion	
+3, Exceptions and Error Handling
+4, Spaceship & Null Coalesce Operator
+5, Esay User-land CSPRN (secure random number)
+*********************************************************************************
+1， Type Declaraion
+
+Scalar Type: (int, float, string, bool)
+strict type: declare(strict_type=1)
+Non-strict type
+return type declaration
+
+Enable strict Mode:
+1, Enable/Disable per file, not in php.ini
+2, Strict applies in the file in which the call to a function is make, not in the file in which the function defined
+3, Integer will be wideend into float by adding .0
+
+Note:
+HTML Forms do not pass integers, floats, or booleans; they pass strings. To find out if a string is numeric, you may use is_numeric().
+
+Note:
+Simply doing if ($x) while $x is undefined will generate an error of level E_NOTICE. Instead, consider using empty() or isset() and/or initialize your variables.
+
+Comparison $x with PHP functions:
+ 1. empty() TRUE:       2. empty() FALSE                 3.is_null() TRUE            4.isset() FALSE                    5.boolean 
+ 	$x="";		                                          var $x;                       var $x;                     opposite to empty()
+	$x=null;                                              $x=null;                     $x=null;
+	var $x;                                               $x is undefined             $x is undefined
+	$x is undefined  
+	$x=array();          $x=array('a','b');
+	$x=false;	         $x=true;
+	$x=0;			   $x=1;  $x=42; $x=-1;
+	$x="0";          $x="1"; $x="-1"; $x="php";
+	                   $x="false"; $x="true";
+	
+
+Loose comparison (==) vs. Strict comparison (===)
+
+	TRUE == (TRUE, 1, -1, "1", "-1", "php")
+    FALSE == (FALSE, 0, "0", NULL, arry(), "")
+	1 == (TRUE, 1, "1")
+    0 == (FALSE, 0, "0", NULL, "php" ??,"")	
+	-1 == (TRUE, -1, "-1")
+	"1" == (TRUE, 1, "1")
+	"0" == (FALSE, 0, "0")
+	"-1" == (TRUE, -1, "-1")
+    NULL == (NULL, FALSE, 0, "", array() )	
+	array() == (FALSE, NULL, array())
+    "php" == (TRUE, 0, "php" )
+    "" == (FALSE, 0, NULL, "")   
+
+   
+    TRUE === TRUE
+    FALSE === FALSE
+    1 === 1	
+	0 === 0
+	-1 === -1
+	"1" === "1"
+	"0" === "0"
+	"-1" === "-1"
+	NULL === NULL
+	array() === array()
+	"php" === "php"
+	""===""
+	
+********************************************************************************
+
+2, Exception and Error Handling
+
+Throwable Class
+
+Interface Hierachy:
+
+| - Exception implements  Throwable
+    | - ...
+
+| - Error implements Throwable
+    | - TypeError extends Error
+    | - ParseError extends Error
+	| - ArithmeticError extends Error	
+	    |- DivisionByZeroError extends ArithmeticError
+	| - AssertionError extends Error
+	
+*******************************************************************************
+
+3. New Operators
+
+1) Spaceship operator (combined comparison operator)
+
+   $compare = 2<=>1
+   
+   2<1? return -1
+   2=1? return 0
+   2>1? return 1   
+   
+   common uses for this operator is in sorting
+   
+   http://php.net/manual/en/language.operators.comparison.php
+   
+
+2) Null Coalesce operator
+
+	//PHP7
+	$name = $firstname ?? "Guest";
+
+	//equals with PHP5
+	if (!empty($firstname)) $name = $firstname;
+	else $name = "Guest";
+	
+	//Stacking
+	$name = $firstname ?? $username ?? $placeholder ?? "Guest";
+	
+*********************************************************************************
+4. Easy User-land CSPRNG
+	
+random_bytes(int length);
+random_int(int min, int max);
+

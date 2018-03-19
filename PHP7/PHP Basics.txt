@@ -1,0 +1,274 @@
+PHP Basics
+
+* Conservative estimate about 25% webpage built on PHP 
+* Initiallu, PHP is an abbrivation of Personal home page tools, in 1995 it was released to the world. Later it changed to a new language still called PHP, now stands for PHP hypertext preprocessor.
+* PHP is a server side language: the code is processed on the web's server; the server receives a request from a client, and processes that script on the server, and then returns the result as an HTML response to the client.
+
+
+****************************************************************************
+Dealing with Errors:
+1. Log and report the Error
+2. Display the Error
+3. Act on the Error
+3. Act on the Error
+4. Ignore the Error (Avoid)
+
+Types of Errors
+1. Notice: will not stop the execution of the script. An example of a notice would be when you try to access an undefined variable
+2. Warning:  As with Notice errors, Warning errors will not stop execution of the script. For example: trying to include a file that is missing, or calling a function with the incorrect number of parameters would each produce a warning.
+3. Fatal Error: Fatal errors are caused when PHP encounters a logical error. There is no issue with the syntax and the script is readable, however, what you’re asking the script to do can't be done. For example: Dividing by zero, trying to access a function that doesn’t exist
+
+
+There are different locations where we can control what error types are to be reported:
+In the php.ini file
+In the .htaccess file on your web server
+From your own PHP code.
+
+***********************************
+In php.ini file:
+error_reporting: Set the error reporting level. The default value is: “E_ALL & ~E_NOTICE,” meaning this this would should all error levels except E_NOTICE. For a development server you probably want to turn everything on by just using E_ALL.
+display_errors: Set it to “ON” (default is “OFF”)if errors are to be printed to the screen.
+log_errors: This indicates whether or not error logging should be done; default value is “on.”
+error_log string: Sets the name of the file where script errors should be logged
++
+html_errors: 
+display_startup_errors: For debugging, you can also turn on errors that occur during PHP's startup sequence
+
+
+.htaccess
+
+setting in PHP file:
+ini_set("log_errors", 1);
+ini_set("error_log", "php-error.txt");
+
+equals: (.htaccess)
+
+# log errors
+php_value log_errors 1
+
+# log file for errors
+php_value error_log php-error.txt
+
+equals:(php.ini)
+log_errors = On
+error_log = "/Applications/MAMP/htdocs/php-error.txt"
+
+***************************************************************************
+PHP Comments
+
+Single Line:
+	# this is a comment line
+	// this is a comment line
+	/* this is a comment line */
+Multiline:
+	//first line
+	//second line
+	
+	/*
+	first line
+	second line
+	*/
+	
+Doc lock comments:
+	/**
+	  * This file is our first hello world
+	  * @author: YY
+	  */
+
+	  
+*******************************************************************************
+PHP Variables
+
+Scalar(Base) Types:
+boolean    true/false
+integer
+float
+string
+
+Compound Types:
+Array
+Object
+
+Special types:
+resource
+NULL
+
+********************
+
+Integer:
+
+var_dump(): This function displays structured information about one or more expressions that includes its type and value. Arrays and objects are explored recursively with values indented to show structure.
+
+gettype(): Returns the type of the PHP variable var. For type checking, use is_* functions.
+	is_int()
+	is_float()
+	is_bool()
+	is_string()
+
+*******************
+float:
+
+$a = 1.234; 
+$b = 1.2e3; 
+$c = 7E-10;
+
+*******************
+Operators:
+
+                Arithmetic Operators
+Example	   Name	                        Result
++$a	     Identity	      Conversion of $a to int or float as appropriate.
+-$a	     Negation	      Opposite of $a.
+$a + $b	 Addition	      Sum of $a and $b.
+$a - $b	 Subtraction	  Difference of $a and $b.
+$a * $b	 Multiplication	  Product of $a and $b.
+$a / $b	 Division	      Quotient of $a and $b.
+$a % $b	 Modulo	Remainder of $a divided by $b.
+$a ** $b Exponentiation	  Result of raising $a to the $b'th power. Introduced in PHP 5.6.
+
+
+		Incermental/Decremental Operators
+++$a     Pre-incrememt    Increment $a by one, then retuern $a
+$a++     Post-increment   Return $a, then incrememt $a by one
+--$a     Pre-decrement    Decrement $a by one, then return  $a
+$a--     Post-decrement   Return $a, then decrement $a by one
+
+******************
+
+String:
+
+single quoted string
+
+double quoted string let you place variables in the string.
+
+	eg:
+	echo "demonstration of double quoted string: $str_1 and $num_one and $flt";
+
+	display as following:
+	demonstration of double quoted string: string 1 and 1 and 1200
+
+Heredoc string:(<<<)
+
+	eg:
+	
+	$name = 'Alena';
+
+	$myString = <<<EOT
+	Example of string
+	spanning multiple lines
+		using spaces
+	and including a $name variable
+	using heredoc syntax.
+	EOT;
+
+	would output:
+	Example of string
+	spanning multiple lines
+		using spaces
+	and including a Alena variable
+	using heredoc syntax.
+
+	
+Nowdoc Strings:
+Nowdocs are to single-quoted strings what heredocs are to double-quoted strings. A nowdoc is specified similarly to a heredoc, but no parsing is done inside a nowdoc.
+
+	eg.:
+	$name = 'Alena';
+
+	$str = <<<'EOT'
+	Example of string
+	spanning multiple lines
+		using spaces
+	and including a $name variable
+	using nowdoc syntax.
+	EOT;
+
+	would output:
+	Example of string
+	spanning multiple lines
+		using spaces
+	and including a $name variable
+	using nowdoc syntax.
+
+	
+************************
+
+Escape Characters:
+'\' will tell the PHP interpreter that the next character will be treated specially
+
+Which escape sequence can be used within a single quoted string?   (\')
+
+**********************
+Concatenation:
+""     Single variable  $myString = "***********";
+.      Single line      $myString = 'Combine multiple'. $strings. 'on one string';
+.=     Multiline        $myString.= 'Combine multiple';
+						$myString.= $strings;
+						$myString.= 'on one string';
+						
+**********************
+Boolean:
+
+var_dump((bool) "");        // bool(false)
+var_dump((bool) 0);        // bool(false)
+var_dump((bool) 1);         // bool(true)
+var_dump((bool) -2);        // bool(true)
+var_dump((bool) "foo");     // bool(true)
+var_dump((bool) 2.3e5);     // bool(true)
+var_dump((bool) array(12)); // bool(true)
+var_dump((bool) array());   // bool(false)
+var_dump((bool) "false");   // bool(true)
+
+
+PHP Framework Interop Group (PHP-FIG) is a group of established PHP projects whose goal is to talk about commonalities between our projects and find ways we can work better together.
+
+PHP Standards Recommendations (PSR-2) intent is to reduce cognitive friction when scanning code from different authors. It does so by enumerating a shared set of rules and expectations about how to format PHP code.
+
+PHP keywords MUST be in lower case.
+The PHP constants true, false, and null MUST be in lower case.
+
+**********************************************************************************************************************
+
+Add Logic
+
+If...else Statement:
+if (condition1) {
+
+} elseif (condition2) {
+
+} else {
+
+}
+
+***********************************************************************************************************************
+
+function date()
+
+
+?????????????????????????????????????
+
+
+*********************************************************************************************************************
+HTML and PHP
+
+
+
+
+
+
+
+
+						
+
+
+
+
+
+
+
+
+
+            
+
+
+
