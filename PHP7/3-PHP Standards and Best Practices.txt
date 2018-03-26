@@ -1,0 +1,292 @@
+
+PHP-FIG, or PHP Framework Interop Group： https://www.php-fig.org/
+PHP the Right Way： http://www.phptherightway.com/
+
+*****************************************************************************
+Choosing a database Extension:
+
+Video:
+https://teamtreehouse.com/library/sql-basics
+
+Database Extension for MySQL:
+mysqli: https://secure.php.net/mysqli
+pdo: https://secure.php.net/pdo
+
+*****************************************************************************
+DateTime Object:
+http://php.net/manual/en/datetime.formats.date.php
+
+
+Time Zone:
+1, UTC is stored in database;
+2, Store the actual time zone in the db and not just the offset;
+3, PHP uses the IANA time zones
+*****************************************************************************
+Understand of UTF-8
+
+Unicode Transfer Format, 8 is to differentiate it from other types of UTF character set.
+
+mbstring should be enabled
+
+http://www.phptherightway.com/#php_and_utf8
+http://php.net/book.mbstring
+
+*UTF-8 at the PHP level:
+	1, You must use the mb_* functions whenever you operate on a Unicode string.
+	2, Not all string functions have an mb_* counterpart
+	3, mb_internal_encoding('UTF-8'); //Tell mbstring to use UTF-8 encodeing for all of its functions
+       mb_http_output('UTF-8');
+	   use above functions at the top of every PHP script (or at the top of your global include script)
+    4, Additionally, many PHP functions that operate on strings have an optional parameter letting you specify the character encoding. You should always explicitly indicate UTF-8 when given the option.
+	
+*UFT-8 at database level:
+	To make sure your strings go from PHP to MySQL as UTF-8, make sure your database and tables are all set to the utf8mb4 character set and collation, and that you use the utf8mb4 character set in the PDO connection string.
+
+*UTF-8 at browser level:
+	Use the mb_http_output() function to ensure that your PHP script outputs UTF-8 strings to your browser.
+
+	The browser will then need to be told by the HTTP response that this page should be considered as UTF-8. The historic approach to doing that was to include the charset <meta> tag in your page’s <head> tag. This approach is perfectly valid, but setting the charset in the Content-Type header is actually much faster.
+
+****************************************************************************
+Namespaces
+
+Namespaces help to ensure that two different classes or functions (and Constant) with the same name do not break an application. Sometimes this is basic things, like having two different classes with a class named “Client”, like a Twitter Client and a HTTP Client.
+PHP5.3
+
+eg:
+include './src/HTTP/Client.PHP；
+include './src/Twitter/Client.PHP'；
+
+HTTP\Client
+Twitter\Client
+
+****************************************************************************
+Autoloading
+
+Autoloading is the art of only loading what you actually need. It is done very efficiently in PHP, and when a class is requested you can register an autoloader to then locate and include the class for you. When combined with an autoloading standard such as PSR-0 or PSR-4 this is very simple.
+
+bootstrp.php:
+<?PHP
+spl_autoload_register(function ($class){
+	$classPath = str_replace('\\','/',$class);
+	include __DIR__.'/src/'.$classPath.'php';
+});
+?>
+
+******************************************************************************
+Composer
+
+Composer is a powerful dependency manager, much like Bundler for Ruby or NPM for NodeJS, in that it helps developers share and implement shared code. You can specify exact versions, pick stability levels and run updates to get new versions of code, all with a few commands.
+
+Composer is available from getcomposer.org.
+
+run:
+composer require league/flysystem   ->   composer.json, composer.lock , vendor/composer dir and files, vendor/league dir and files, vendor/autoload.php
+
+conposer.json:
+{
+    "require": {
+        "league/flysystem": "^1.0"
+    }
+}
+
+
+code：
+<?PHP
+require './vendor/autoload.php';
+use League\Flysystem\Filesystem;
+use League\Flysystem\Adapter\Zip as Adapter;
+
+$filesystem = new Filesystem(new Adapter(__DIR__.'/archieve.zip'));
+
+//output a list of files
+$contents = $filesystem->listContents();
+
+foreach($contents as $content){
+	echo $content['type']:$content['path'];
+}
+?>
+
+******************************************************************************************
+Component:
+
+composer require phpunit/phpunit --dev
+
+To run the tests live in the "test" directory: 
+./vendor/bin/phpunit test
+
+
+******************************************************************************************
+PSR(PHP Standard Recommendation)-1
+This recommendation was designed to avoid code from one package negatively effecting the global state of the application, or conflicting with another package, and is important to any OOP code put on Composer.
+
+PSR-[0-4]
+PSR-0 (Autoloading Standard) 
+PSR-1 (Basic Coding Standard) 
+PSR-2 (Coding Style Guide) 
+PSR-3 (Logger Interface) 
+PSR-4 (Improved Autoloading) Can replcace PSR-0
+
+1, Long tags Vs short tags
+Only use long tags and shart echo tags
+<?PHP?>
+<?=?> 
+
+2, PHP should have its own files written in UTF8
+
+3,  A file just can do only one of below things:
+	1) Define functions, classes, constants, etc
+	2) Side effects: Generating output, explict use of include or require, connecting external services, modifying ini settings, emitting error or exceptions, modifying global or static variables, reading from or writting to files
+	
+4, namespace and classes must follow PSR-0 or PSR-4
+Each class is in a file by itself, and is in a namespace of at least one level
+
+Class must be declared in StudlyCaps,eg StudlyCaps
+
+namespace and class example: Treehouse\Cannon\MonkeyCannon
+
+5, Class Constant, Properties and Method
+
+	1) Class Constants must be declared in all upper case with underscore seperators
+		<?php
+		namespace Vendor\Model;
+
+		class Foo
+		{
+			const VERSION = '1.0';
+			const DATE_APPROVED = '2012-06-01';
+		}
+	
+	3) Methods must be declared in camelCase()
+
+
+*******************************************************************************************
+PSR-2
+
+1, code must follow a "coding style guide" PSR-1
+2, Code must use 4 spaces for indenting, not tabs
+3, Lines should be 80 characters or less (soft limit must be 120 characters)
+4, There must be one blank line after namespace declaration; and there must be one one blank line after the block of use declaration
+5, Opening braces for class must go on the NEXT line, and closing braces must go on the next line after the body
+6, Opening braces for methods must go on the NEXT line, and closing braces must go on the next line after the body
+7,(??) Visibility MUST be declared on all properties and methods; abstract and final MUST be declared before the visibility; static MUST be declared after the visibility
+8, Control struture keywords must have one space after them; while method and function calls must not
+9, Opening braces for control structures MUST go on the same line, and closing braces MUST go on the next line after the body.
+10, Opening parentheses for control structures MUST NOT have a space after them, and closing parentheses for control structures MUST NOT have a space before.
+
+CodeSniffer (squizlabs/php_codesniffer)
+command
+./vendor/bin/phpcs src --standard=PSR2
+
+********************************************************************************************
+Composer Metadata
+
+Release your package
+
+composer.json
+
+{
+    "name" : "treehouse/example",
+	"description" : "This is an example package",
+	"keywords" : ["PHP", "example", "treehouse", "squirrel"],
+	"authors": [
+	    {
+		    "name" : "  ",
+			"email" : " ",
+			"homepage" : "  ",
+			"role" : "  "
+		}
+	],
+	"require" : {
+		"php" : ">=5.4.0"
+	},	
+	"requie-dev" {
+	    "phpunit/phpunit" : "4.2.*",
+		"squizlabs/php_codesniffer" : "*"
+	},
+	"autoload" : {
+		"psr-4" : {
+		    "Treehouse\\Example" : "src"
+		}
+	}	
+}
+
+*********************************************************************************************
+Semantic Versionin
+
+2.3.4 (major.minor.patch)
+
+it is good idea to version initial release as 0.1.0
+
+********************************************************************************************
+Errors
+
+
+Undefined variable in a mathematical opration would lead to E_NOTICE
+
+*********************************************************************************************
+Exceptions
+
+Exception are thrown - they are intended to be caught! Errors are generally unrecovrable.  An exception will be treated as an error unless it is caught.
+
+********************************************************************************************
+Converting Errors to Exceptions
+
+Error Handler:
+
+ini_set('display_errors',1);
+
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
+   throw new ErrorExeption($errstr, 0, $errno, $errfile, $errline); 
+});
+
+try {
+
+}catch (ErrorExeption $e) {
+
+}
+
+*******************************************************************************************
+Logging
+
+PSR-3 is a recommendation a little different to the PSRs discussed so far. Instead of just being a textual document, this PSR has an actual Composer package you can require, full of defined instances. Logging becomes easier and far more robust when working with PSR-3 and a package like Monolog.
+
+Run:
+composer require monolog/monolog
+
+Example of using monolog:
+
+<?PHP
+include "./vendor/autoload.php";
+
+use Monolog\Logger;
+use Monolog\Handler\BrowserConsoleHandler;
+
+$log = new Logger('my_app');
+$log->pushHandler(new BrowserConsoleHandler());
+//error, warning, critical, debug...
+$log->debug("something happened.");
+
+echo "check the logs to see whats happening in here...";
+?>
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+

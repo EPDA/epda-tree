@@ -1,0 +1,82 @@
+What is Object-Oriented Programming
+
+Class: methods and properties
+Object: instance of Object
+
+1, a programming paradigm is a style or way of approaching problem to come up with a solution. Two main paradigms in PHP are procedual and OOP
+2, No one programming paradigm can solve every programming problem
+3, Bad spaghetti code that weaves all over your application and is complicated to follow can be written in any paradigm, incliding OOP.
+   Follow two tenets of programming: 1, dry principle(don't repeat yourself); 2, KISS principle(keep it simple, stupid)
+
+Why OOP?
+1, Modularity
+2, Reusability
+3, Maintainable
+4, Scalability
+5, Framework (PHP frameworks:Laravel, Symphony and Zend)
+6, Contribute to open source software
+7, Give you various ways to think and solve problems
+8, More easiler translate your programming skills into other OOP languages
+9, Become a more valuable developer
+
+**************************************************************************************
+
+Classes and Objects
+
+1, typically only one class per file
+2, The file name is the same as the class name
+3, All class files are stored within a 'classes' folder
+
+
+Access modifiers： 
+	public: Publicly accessible for anywhere, even from outside the scope of class
+	private: Accessed within the class itself.
+	protected: Same as private, except by allowing child(sub) classes to access protected parent(super) properties and methods.
+	
+Object-Operators:
+->: Note the property name does not start with $ sign, only the object name start with $. Beacuse this entire reference is one variable
+
+**************************************************************************************
+Associative Arrays
+
+http://php.net/manual/en/language.types.type-juggling.php
+
+Typoe Casting:
+Type casting in PHP works much as it does in C: the name of the desired type is written in parentheses before the variable which is to be cast.
+
+<?php
+$foo = 10;   // $foo is an integer
+$bar = (boolean) $foo;   // $bar is a boolean
+?>
+The casts allowed are:
+
+(int), (integer) - cast to integer
+(bool), (boolean) - cast to boolean
+(float), (double), (real) - cast to float
+(string) - cast to string
+(array) - cast to array
+(object) - cast to object
+(unset) - cast to NULL
+
+
+***************************************************************************************
+Some functions:
+
+explode(http://php.net/explode):  from string to array
+
+implode (http://php.net/implode) :from array to string
+
+trim
+ltrim
+rtrim
+
+***************************************************************************************
+Static Methods
+
+
+
+
+
+
+
+ 
