@@ -73,7 +73,165 @@ rtrim
 ***************************************************************************************
 Static Methods
 
+if a class is used to group functions without storing information, you can access this fuctionality using statis method. 
 
+Single Responsibiliy Principle: Every class shoule have responsibility over a single part of the functionality provided by the software. And that responsibility should be entirely encapsulated or contained by the class
+
+Declaring class properties or methods as static makes them accessible without needing an instantiation of the class. A property declared as static cannot be accessed with an instantiated class object (though a static method can).
+
+Static Method:
+<?php
+class Foo {
+    public static function aStaticMethod() {
+        // ...
+    }
+}
+
+Foo::aStaticMethod();
+$classname = 'Foo';
+$classname::aStaticMethod(); // As of PHP 5.3.0
+?>
+
+
+Static Properties:
+Static properties cannot be accessed through the object using the arrow operator ->.
+
+*****************************************************************************************
+Magic Methods:
+http://php.net/manual/en/language.oop5.magic.php
+
+Object Oriented PHP offers several "magic methods". The "magic" comes from the fact that they are triggered by an action instead of called directly. We’ll demonstrate the power of several of the magic methods you’ll encounter most often.
+
+The function names 
+__construct()
+__destruct()
+__call()
+__callStatic()
+__get()
+__set()
+__isset()
+__unset()
+__sleep()
+__wakeup()
+__toString()
+__invoke()
+__set_state()
+__clone() 
+__debugInfo() 
+are magical in PHP classes. You cannot have functions with these names in any of your classes unless you want the magic functionality associated with them.
+
+***************************************************************************************
+Magic Constants
+
+http://php.net/manual/en/language.constants.predefined.php
+
+Along with "Magic Methods", PHP also provides a large number of predefined constants to give us... a little more magic. These "Magic Constants" can provide details about our script and our environment. We'll look at a few "Magic Constants" that help us understand our classes and objects.
+
+A few "magical" PHP constants
+Name	Description
+__LINE__	The current line number of the file.
+__FILE__	The full path and filename of the file with symlinks resolved. If used inside an include, the name of the included file is returned.
+__DIR__	The directory of the file. If used inside an include, the directory of the included file is returned. This is equivalent to dirname(__FILE__). This directory name does not have a trailing slash unless it is the root directory.
+__FUNCTION__	The function name.
+__CLASS__	The class name. The class name includes the namespace it was declared in (e.g. Foo\Bar). Note that as of PHP 5.4 __CLASS__ works also in traits. When used in a trait method, __CLASS__ is the name of the class the trait is used in.
+__TRAIT__	The trait name. The trait name includes the namespace it was declared in (e.g. Foo\Bar).
+__METHOD__	The class method name.
+__NAMESPACE__	The name of the current namespace.
+ClassName::class	The fully qualified class name. See also ::class.
+
+get_class_methods()
+
+******************************************************************************************
+Populating the Recipes
+
+Ways to pull the recipes
+Typed straight into code (single or individual files)
+Read from individual text files
+Stored in a Database
+Pulled from an API / JSON feed
+*******************************************************************************************
+Creating a Collection
+
+Organization helps us to use things more effectively. The first step in organization is grouping things. A collection object can hold a group of objects and allow us to perform actions on these objects. 
+
+
+SplObjectStorage:
+http://php.net/manual/en/class.splobjectstorage.php
+
+<?php
+$s = new SplObjectStorage();
+
+$o1 = new StdClass;
+$o2 = new StdClass;
+
+$s->attach($o1, "d1");
+$s->attach($o2, "d2");
+
+$s->rewind();
+while($s->valid()) {
+    $index  = $s->key();
+    $object = $s->current(); // similar to current($s)
+    $data   = $s->getInfo();
+
+    var_dump($object);
+    var_dump($data);
+    $s->next();
+}
+?>
+
+Symfony Collection:
+http://symfony.com/doc/current/reference/constraints/Collection.html
+Laravel Collection:
+https://laravel.com/docs/5.1/collections
+Eloquent Collection:
+https://laravel.com/docs/5.1/eloquent-collections
+
+***********************************************************************
+Array Sort:
+http://php.net/manual/en/array.sorting.php
+
+Array Functions:
+http://php.net/manual/en/ref.array.php
+
+Array Map:
+http://php.net/manual/en/function.array-map.php
+
+<?php
+function cube($n)
+{
+    return($n * $n * $n);
+}
+
+$a = array(1, 2, 3, 4, 5);
+$b = array_map("cube", $a);
+print_r($b);
+?>
+
+This makes $b have:
+
+Array
+(
+    [0] => 1
+    [1] => 8
+    [2] => 27
+    [3] => 64
+    [4] => 125
+)
+
+
+Array Filter:
+http://php.net/manual/en/function.array-filter.php
+$taggedRecipes = array_filter(
+            $this->recipes,
+            function ($recipes) use ($tag) {
+                return in_array(ucwords($tag),$recipes->getTagArray());
+            }
+        );
+
+****************************************************************************
+func_get_args()
+func_num_args()
+http://php.net/manual/en/function.func-get-args.php
 
 
 

@@ -20,9 +20,23 @@ class Recipe
 		"gallon"
 	);
 	
+	public function __construct($title=null)
+	{
+		$this->setTitle($title);
+	}
+	
+	public function __toString()
+	{
+		return $this->getTitle();
+	}
+	
 	public function setTitle($title)
 	{
-		$this->title = ucwords($title);
+		if (empty($title)){
+			$this->title = null;
+		}else {
+			$this->title = ucwords($title);
+		}		
 	}
 	
 	public function getTitle()
@@ -63,7 +77,13 @@ class Recipe
 	
 	public function addTag($tag)
 	{
-	    $this->tags[] = strtolower($tag);
+		if (!empty($tag)) {
+		    $temp = explode(",", $tag);
+			foreach($temp as $t) {				
+				$this->tags[] = trim(strtolower($t));
+			}	        
+		}
+		//$this->tags[] = strtolower($tag);
 	}
 	
 	public function getTags()
@@ -92,8 +112,5 @@ class Recipe
 		return $this->source;
 	}
 	
-	public function displayRecipe()
-	{
-		return $this->title . " by " . $this->source;
-	} 
+	
 }
