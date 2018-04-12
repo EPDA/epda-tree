@@ -1,0 +1,65 @@
+Install local development environment:
+
+1, Download MAMP: https://www.mamp.info/en/
+
+2, Install MAMP
+    C:\MAMP
+	
+3, Start Page:  
+   http://localhost/MAMP/
+
+4, Apache
+
+5, MySQL: 
+       db:wordpress
+	   u/p: root/root
+	   
+6, wordpress : yuanyin1119@gmail.com/ !QAZ2wsx
+
+
+*************************************************************************************************************
+Associative Array
+
+Mutidimentional Array -  these include Associative Arrays, Hashed Arrays and Nested Arrays.
+
+Responsive Web Design - A technique for creating websites that work on multiple screen resolutions via the combination of fluid images, fluid grids, and media queries.
+https://teamtreehouse.com/library/how-to-make-a-website/responsive-web-design-and-testing/responsive-web-design
+
+PHP functions: http://php.net/manual/en/funcref.php
+
+****************************************************************************************************************
+Html Special Characters
+https://dev.w3.org/html5/html-author/charref
+
+Html <pre> tag:
+The <pre> tag defines preformatted text.
+Text in a <pre> element is displayed in a fixed-width font (usually Courier), and it preserves both spaces and line breaks.
+
+Redirection:
+header("location:***.php")
+
+**************************************************************************************************************
+
+Send Email library: 
+PHPMailer: https://github.com/PHPMailer/PHPMailer
+http://blog.teamtreehouse.com/sending-email-with-phpmailer-and-smtp
+
+
+
+**************************************************************************************************************
+include vs require:
+include: if the file doesn't exist, then PHP will throw a warning.But it will still execute the rest of the code.
+require: if the file doesn't exist, then PHP will error, and will not execute any more code.
+require once:
+
+
+ndyjmgiyahdsfmcx
+
+
+
+
+   
+
+   
+
+

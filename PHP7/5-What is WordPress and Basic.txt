@@ -1,0 +1,98 @@
+What is WordPress
+
+WordPress is a publishing platform that makes it easy for anyone to publish online, and proudly powers millions of websites. It comes in two flavors: the fully hosted WordPress.com, and the self-hosted version, whose software is available for free at WordPress.org.
+
+Content Management Systems like WordPress let you build and manage websites without having to interact with the code that is doing all of the work behind the scenes. When you understand how Content Management Systems work, you can see why they are such popular tools for building and maintaining websites. In this video we go illustrate how CMS work.
+
+Why WordPress?
+1, CMS
+2, free
+3, Hugu community
+4, Plugin
+5, Themes
+
+***************************************************************************************************
+Login WordPress Site
+To login to the admin area on most WordPress sites you can add /wp-admin to the end of your site url. In this video we go over how to login to your WordPress site.
+
+WordPress comes with two types of default content: Posts and Pages. In this video we introduce these two types of content and discuss their similarity and differences:
+
+Pages: Pages in WordPress are what are referred to as static content, meaning that the content generally lives in one specific place on the site with its own URL. Pages can be edited and updated, but they are not generally changed too much once they are created. Pages are hierarchical, meaning that they can have a parent, child relationship where one main page has several sub-pages. This relationship is often reflected in drop down menus. Examples of pages can include things like an about page, a contact page, or a services page.
+
+Post:  Posts on the other hand, are what are referred to as dynamic content, meaning that they are published regularly and often appear on different places throughout a site. For example, information about posts could exist on a main blog page, in sidebar widgets, as well as in other places like the footer or somewhere on the home page. Posts can be grouped using categories and tags, which help identify common topics and details that connect or identify posts. Posts are generally used for a blog or news section of a site.
+
+Categories in WordPress: 
+1, Hige level:  Categories are high level, generic ways of grouping posts and tags are specific, more unique ways of identifying topics the post relates to.
+2, 2~ 8 categories per site
+3, Posts require at least 1 category
+
+Tags:
+1, specific , detailes level
+2, Post can have many tags
+3, Optional: Tags are optional and usually display along with categories for a post or in a sidebar or a footer as a tag could 
+
+
+************************************************************************************************
+Introduction to Pods:
+https://pods.io/
+
+
+Adding Medie in WordPress:
+https://codex.wordpress.org/Media_Library_Screen
+https://codex.wordpress.org/Embeds
+
+ 
+Adding Image to Posts or Pages:
+Image Optimization or Compression: The process to edit the size or quality of an image so that help to load faster on the websites
+
+Image Gallery：
+https://codex.wordpress.org/The_WordPress_Gallery
+
+Native Audio File Support in wordpress
+https://codex.wordpress.org/Audio_Shortcode
+
+Native Video File Support in WordPress
+https://codex.wordpress.org/Video_Shortcode
+
+Embedding External Media in WordPress
+https://codex.wordpress.org/Embeds
+
+*******************************************************************************************************
+WordPress Customizer
+
+Managing Menu:
+
+Widgets:
+
+Homepages:
+
+Color:
+
+Themes:
+
+********************************************************************************************************
+WordPress Themes: Change te look or feeling of your site
+
+WordPress Themes Repository:    https://wordpress.org/themes/
+
+*******************************************************************************************************
+
+WordPress Plugins: Plugin add additional functionality to a site
+https://wordpress.org/plugins/
+
+Common WordPress Plugins:
+ 1, Widget Plugins
+ 2, Social Plugins
+ 3, Backup and Security
+ 4, Media Plugins
+ 5, Custom Post Types and fields
+ 6, Form Plugins
+ 7, Membership Plugins
+ 8, SEO and performence Plugins
+ 9, Ecommerce Plugins
+ 
+ 
+ 
+
+
+
