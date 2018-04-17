@@ -83,3 +83,23 @@ foreach ($indicesServer as $arg) {
     } 
 } 
 echo '</table>' ; 
+
+
+4, Write a PHP script, which will return the following components of the 
+url 'https://www.w3resource.com/php-exercises/php-basic-exercises.php'. 
+
+<?php
+$url = 'https://www.w3resource.com/php-exercises/php-basic-exercises.php';
+$url=parse_url($url);
+echo 'Scheme : '.$url['scheme']."\n";
+echo 'Host : '.$url['host']."\n";
+echo 'Path : '.$url['path']."\n";
+?>
+
+5, Write a PHP script, which changes the color of the first character of a word.
+
+<?php
+$text = 'PHP Tutorial';
+$text = preg_replace('/(\b[a-z])/i','<span style="color:red;">\1</span>',$text);
+echo $text;
+?>
