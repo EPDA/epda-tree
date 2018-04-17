@@ -26,7 +26,7 @@ HTML Forms do not pass integers, floats, or booleans; they pass strings. To find
 Note:
 Simply doing if ($x) while $x is undefined will generate an error of level E_NOTICE. Instead, consider using empty() or isset() and/or initialize your variables.
 
-Comparison $x with PHP functions:
+Comparison $x with PHP functions:(is_null() is opposite to isset())
  1. empty() TRUE:       2. empty() FALSE                 3.is_null() TRUE            4.isset() FALSE                    5.boolean 
  	$x="";		                                          var $x;                       var $x;                     opposite to empty()
 	$x=null;                                              $x=null;                     $x=null;
