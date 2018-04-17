@@ -1,7 +1,7 @@
 PHP Basics
 
 * Conservative estimate about 25% webpage built on PHP 
-* Initiallu, PHP is an abbrivation of Personal home page tools, in 1995 it was released to the world. Later it changed to a new language still called PHP, now stands for PHP hypertext preprocessor.
+* Initially, PHP is an abbrivation of Personal home page tools, in 1995 it was released to the world. Later it changed to a new language still called PHP, now stands for PHP hypertext preprocessor.
 * PHP is a server side language: the code is processed on the web's server; the server receives a request from a client, and processes that script on the server, and then returns the result as an HTML response to the client.
 
 
@@ -15,7 +15,7 @@ Dealing with Errors:
 
 Types of Errors
 1. Notice: will not stop the execution of the script. An example of a notice would be when you try to access an undefined variable
-2. Warning:  As with Notice errors, Warning errors will not stop execution of the script. For example: trying to include a file that is missing, or calling a function with the incorrect number of parameters would each produce a warning.
+2. Warning: As with Notice errors, Warning errors will not stop execution of the script. For example: trying to include a file that is missing, or calling a function with the incorrect number of parameters would each produce a warning.
 3. Fatal Error: Fatal errors are caused when PHP encounters a logical error. There is no issue with the syntax and the script is readable, however, what you’re asking the script to do can't be done. For example: Dividing by zero, trying to access a function that doesn’t exist
 
 
