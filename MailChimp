@@ -2,11 +2,13 @@
 https://us18.admin.mailchimp.com/
 
 List -> Click the Name of item -> Signup Forms -> Embedded forms:
- Select different Form Style, for example "Classic", Copy/Paste Code as below to your html
+Select different Form Style, for example "Classic", Copy/Paste Code as below to your html
  
- When clicking "Suscribe" successfully, 1 item will be add into your List
+When clicking "Suscribe" successfully, 1 item will be add into your List.
+
+Note: You can edit your forms through "Signup forms".
  
- ****************************************************************
+******************************************************************
  
 <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
